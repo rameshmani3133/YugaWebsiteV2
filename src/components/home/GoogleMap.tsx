@@ -32,7 +32,7 @@ export default function GoogleMap() {
 
           <iframe
             title="YUGA Document Consultancy Centre"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.76656555617834!2d78.1648012029465!3d11.21812851271267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babcf3048717a19%3A0xe97b97da2ea2c57c!2sRukhmani%20Ammal%20Vegetarian%20Restaurant!5e1!3m2!1sen!2sin!4v1784772025337!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d198.12448631895452!2d78.1648132605034!3d11.218036362145535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1784774118130!5m2!1sen!2sin"
             width="600"
             height="450"
             style={{ border: 0 }}
