@@ -10,7 +10,59 @@ import { errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: false,
+      directives: {
+        defaultSrc: ["'self'"],
+
+        baseUri: ["'self'"],
+
+        objectSrc: ["'none'"],
+
+        frameAncestors: ["'self'"],
+
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://maps.googleapis.com",
+        ],
+
+        styleSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "https://fonts.googleapis.com",
+        ],
+
+        fontSrc: [
+          "'self'",
+          "https://fonts.gstatic.com",
+          "data:",
+        ],
+
+        imgSrc: [
+          "'self'",
+          "data:",
+          "blob:",
+          "https:",
+        ],
+
+        connectSrc: [
+          "'self'",
+          "https://maps.googleapis.com",
+        ],
+
+        frameSrc: [
+          "'self'",
+          "https://www.google.com",
+          "https://maps.google.com",
+          "https://www.google.com/maps",
+        ],
+      },
+    },
+  })
+);
 
 app.use(cors());
 
