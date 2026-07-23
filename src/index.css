@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Theme Variables */
+:root {
+  --color-primary: #0a2e63;
+  --color-secondary: #164a92;
+  --color-gold: #d4af37;
+  --color-dark: #1e293b;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+}
