@@ -1,73 +1,117 @@
 import { useState } from "react";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-const menus = [
-  { title: "Home", path: "/" },
-  { title: "About", path: "/about" },
-  { title: "Services", path: "/services" },
-  { title: "Gallery", path: "/gallery" },
-  { title: "Contact", path: "/contact" },
-];
+import {
+  SITE,
+  NAVIGATION,
+  IMAGES,
+} from "../config";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <>
-      {/* Top Bar */}
+      {/* =========================
+          TOP BAR
+      ========================== */}
+
       <div className="bg-[#0A2E63] text-white">
+
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-sm">
+
           <div className="flex flex-wrap gap-6">
-            <a href="tel:+919940944985" className="hover:text-yellow-300">
-              📞 +91 99409 44985
+
+            <a
+              href={`tel:${SITE.contact.phoneDigits}`}
+              className="transition hover:text-yellow-300"
+            >
+              📞 {SITE.contact.phone}
             </a>
 
             <a
-              href="mailto:info@yugadocument.in"
-              className="hover:text-yellow-300"
+              href={`mailto:${SITE.contact.email}`}
+              className="transition hover:text-yellow-300"
             >
-              ✉ info@yugadocument.in
+              ✉ {SITE.contact.email}
             </a>
+
           </div>
 
           <div className="hidden md:block">
-            Mon – Sat | 9:30 AM – 7:30 PM
+
+            {SITE.timings.workingDays}
+
+            {" | "}
+
+            {SITE.timings.workingHours}
+
           </div>
+
         </div>
+
       </div>
 
-      {/* Main Navbar */}
+      {/* =========================
+          MAIN NAVBAR
+      ========================== */}
+
       <header className="sticky top-0 z-50 bg-white shadow-lg">
+
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-4">
+          {/* =========================
+              LOGO
+          ========================== */}
+
+          <NavLink
+            to="/"
+            className="flex items-center gap-4"
+          >
+
             <img
-              src="/images/logo.png"
-              alt="YUGA"
+              src={IMAGES.logo}
+              alt={SITE.shortName}
               className="h-14 w-14 object-contain"
             />
 
             <div>
+
               <h1 className="text-lg font-bold text-[#0A2E63]">
-                YUGA DOCUMENT
+
+                {SITE.branding.line1}
+
               </h1>
 
-              <p className="text-xs text-slate-500">
-                CONSULTANCY CENTRE
+              <p className="text-xs tracking-wide text-slate-500">
+
+                {SITE.branding.line2}
+
               </p>
+
             </div>
+
           </NavLink>
 
-          {/* Desktop Menu */}
+          {/* =========================
+              DESKTOP MENU
+          ========================== */}
+
           <nav className="hidden gap-8 lg:flex">
-            {menus.map((menu) => (
+
+                      {NAVIGATION.map((menu) => (
+
               <NavLink
                 key={menu.path}
                 to={menu.path}
                 className={({ isActive }) =>
-                  `font-medium transition ${
+                  `font-medium transition-colors duration-300 ${
                     isActive
                       ? "text-[#0A2E63]"
                       : "text-slate-700 hover:text-[#D4AF37]"
@@ -76,53 +120,122 @@ export default function Navbar() {
               >
                 {menu.title}
               </NavLink>
+
             ))}
+
           </nav>
 
-          {/* Desktop Actions */}
+          {/* =========================
+              DESKTOP ACTIONS
+          ========================== */}
+
           <div className="hidden items-center gap-3 lg:flex">
+
             <a
-              href="tel:+919940944985"
-              className="rounded-lg bg-[#0A2E63] px-5 py-3 text-white transition hover:bg-[#164A92]"
+              href={`tel:${SITE.contact.phoneDigits}`}
+              className="rounded-lg bg-[#0A2E63] p-3 text-white transition duration-300 hover:bg-[#164A92]"
+              aria-label="Call Now"
             >
-              <Phone size={18} />
+              <Phone size={20} />
             </a>
 
             <a
-              href="https://wa.me/919940944985"
+              href={`https://wa.me/${SITE.contact.whatsapp}`}
               target="_blank"
-              rel="noreferrer"
-              className="rounded-lg bg-green-600 px-5 py-3 text-white transition hover:bg-green-700"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-green-600 p-3 text-white transition duration-300 hover:bg-green-700"
+              aria-label="WhatsApp"
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={20} />
             </a>
+
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* =========================
+              MOBILE MENU BUTTON
+          ========================== */}
+
           <button
-            className="lg:hidden"
+            type="button"
+            className="rounded-md p-2 transition hover:bg-slate-100 lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Navigation"
           >
-            {mobileOpen ? <X size={30} /> : <Menu size={30} />}
+            {mobileOpen ? (
+              <X size={30} />
+            ) : (
+              <Menu size={30} />
+            )}
           </button>
+
         </div>
 
-        {/* Mobile Menu */}
+        {/* =========================
+            MOBILE MENU
+        ========================== */}
+
         {mobileOpen && (
-          <div className="border-t bg-white lg:hidden">
-            {menus.map((menu) => (
-              <NavLink
-                key={menu.path}
-                to={menu.path}
-                onClick={() => setMobileOpen(false)}
-                className="block border-b px-6 py-4 hover:bg-slate-50"
-              >
-                {menu.title}
-              </NavLink>
-            ))}
+
+          <div className="border-t bg-white shadow-lg lg:hidden">
+
+            <nav className="flex flex-col">
+              
+                            {NAVIGATION.map((menu) => (
+
+                <NavLink
+                  key={menu.path}
+                  to={menu.path}
+                  onClick={() => setMobileOpen(false)}
+                  className={({ isActive }) =>
+                    `border-b px-6 py-4 font-medium transition-colors duration-300 ${
+                      isActive
+                        ? "bg-blue-50 text-[#0A2E63]"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-[#0A2E63]"
+                    }`
+                  }
+                >
+                  {menu.title}
+                </NavLink>
+
+              ))}
+
+              {/* =========================
+                  MOBILE ACTION BUTTONS
+              ========================== */}
+
+              <div className="flex gap-4 p-6">
+
+                <a
+                  href={`tel:${SITE.contact.phoneDigits}`}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#0A2E63] px-4 py-3 text-white transition duration-300 hover:bg-[#164A92]"
+                >
+                  <Phone size={18} />
+
+                  <span>Call</span>
+
+                </a>
+
+                <a
+                  href={`https://wa.me/${SITE.contact.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 text-white transition duration-300 hover:bg-green-700"
+                >
+                  <MessageCircle size={18} />
+
+                  <span>WhatsApp</span>
+
+                </a>
+
+              </div>
+
+            </nav>
+
           </div>
+
         )}
+
       </header>
-    </>
+          </>
   );
 }

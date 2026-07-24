@@ -13,78 +13,77 @@ import {
 
 import { Link } from "react-router-dom";
 
-const services = [
-  "Property Registration",
-  "Patta Transfer",
-  "Encumbrance Certificate",
-  "Legal Documentation",
-  "Bank Loan Documentation",
-  "Government Services",
-];
+import {
+  SITE,
+  NAVIGATION,
+  SERVICES,
+} from "../config";
 
 export default function Footer() {
+
   const year = new Date().getFullYear();
 
   return (
+
     <footer className="bg-[#0A2E63] text-white">
 
       <div className="mx-auto max-w-7xl px-6 py-16">
 
         <div className="grid gap-12 lg:grid-cols-4">
 
-          {/* Company */}
+          {/* =========================
+              COMPANY
+          ========================== */}
 
           <div>
 
             <h2 className="mb-5 text-2xl font-bold">
-              YUGA DOCUMENT
+
+              {SITE.branding.line1}
+
               <br />
-              CONSULTANCY CENTRE
+
+              {SITE.branding.line2}
+
             </h2>
 
             <p className="leading-8 text-blue-100">
+
               Trusted consultancy for Property Registration,
-              Legal Documentation, Patta Transfer,
-              Encumbrance Certificate and Government
-              Documentation Services.
+              Legal Documentation,
+              Patta Transfer,
+              Encumbrance Certificate and
+              Government Documentation Services.
+
             </p>
 
           </div>
 
-          {/* Quick Links */}
+          {/* =========================
+              QUICK LINKS
+          ========================== */}
 
           <div>
 
             <h3 className="mb-5 text-xl font-semibold">
+
               Quick Links
+
             </h3>
 
             <ul className="space-y-3">
+            
+                          {NAVIGATION.map((item) => (
 
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/services">Services</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+                <li key={item.path}>
 
-            </ul>
+                  <Link
+                    to={item.path}
+                    className="transition hover:text-yellow-300"
+                  >
+                    {item.title}
+                  </Link>
 
-          </div>
-
-          {/* Services */}
-
-          <div>
-
-            <h3 className="mb-5 text-xl font-semibold">
-              Services
-            </h3>
-
-            <ul className="space-y-3">
-
-              {services.map(service => (
-
-                <li key={service}>
-                  {service}
                 </li>
 
               ))}
@@ -93,56 +92,140 @@ export default function Footer() {
 
           </div>
 
-          {/* Contact */}
+          {/* =========================
+              SERVICES
+          ========================== */}
 
           <div>
 
             <h3 className="mb-5 text-xl font-semibold">
+
+              Services
+
+            </h3>
+
+            <ul className="space-y-3">
+
+              {SERVICES
+                .filter(service => service.featured)
+                .map((service) => (
+
+                  <li key={service.id}>
+
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className="transition hover:text-yellow-300"
+                    >
+                      {service.title}
+                    </Link>
+
+                  </li>
+
+                ))}
+
+            </ul>
+
+          </div>
+
+          {/* =========================
+              CONTACT
+          ========================== */}
+
+          <div>
+
+            <h3 className="mb-5 text-xl font-semibold">
+
               Contact
+
             </h3>
 
             <div className="space-y-5">
 
-              <div className="flex gap-3">
+                           {/* Phone */}
 
-                <Phone size={20} />
+              <div className="flex items-start gap-3">
 
-                <a href="tel:+919940944985">
-                  +91 99409 44985
+                <Phone
+                  size={20}
+                  className="mt-1 flex-shrink-0"
+                />
+
+                <a
+                  href={`tel:${SITE.contact.phoneDigits}`}
+                  className="transition hover:text-yellow-300"
+                >
+                  {SITE.contact.phone}
                 </a>
 
               </div>
 
-              <div className="flex gap-3">
+              {/* Email */}
 
-                <Mail size={20} />
+              <div className="flex items-start gap-3">
 
-                <a href="mailto:info@yugadocument.in">
-                  info@yugadocument.in
+                <Mail
+                  size={20}
+                  className="mt-1 flex-shrink-0"
+                />
+
+                <a
+                  href={`mailto:${SITE.contact.email}`}
+                  className="break-all transition hover:text-yellow-300"
+                >
+                  {SITE.contact.email}
                 </a>
 
               </div>
 
-              <div className="flex gap-3">
+              {/* Address */}
 
-                <MapPin size={20} />
+              <div className="flex items-start gap-3">
+
+                <MapPin
+                  size={20}
+                  className="mt-1 flex-shrink-0"
+                />
 
                 <span>
-                  Musiri,
-                  Tamil Nadu,
-                  India
+
+                  {SITE.office.addressLine1 && (
+                    <>
+                      {SITE.office.addressLine1}
+                      <br />
+                    </>
+                  )}
+
+                  {SITE.office.city},
+
+                  <br />
+
+                  {SITE.office.state},
+
+                  {" "}
+
+                  {SITE.office.country}
+
                 </span>
 
               </div>
 
-              <div className="flex gap-3">
+              {/* Office Hours */}
 
-                <Clock size={20} />
+              <div className="flex items-start gap-3">
+
+                <Clock
+                  size={20}
+                  className="mt-1 flex-shrink-0"
+                />
 
                 <span>
-                  Mon - Sat
+
+                  {SITE.timings.workingDays}
+
                   <br />
-                  9:30 AM - 7:30 PM
+
+                  {SITE.timings.workingHours}
+
                 </span>
 
               </div>
@@ -155,46 +238,62 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom */}
+      {/* =========================
+          FOOTER BOTTOM
+      ========================== */}
 
       <div className="border-t border-blue-800">
 
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-6 md:flex-row">
 
-          <p className="text-sm text-blue-200">
+                    <p className="text-center text-sm text-blue-200 md:text-left">
 
-            © {year} YUGA DOCUMENT CONSULTANCY CENTRE.
+            © {year} {SITE.website.copyright}.
+
+            {" "}
+
             All Rights Reserved.
 
           </p>
 
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
+
+            {SITE.social.facebook && (
+
+              <a
+                href={SITE.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-yellow-300"
+                aria-label="Facebook"
+              >
+                <FaFacebookF size={20} />
+              </a>
+
+            )}
+
+            {SITE.social.instagram && (
+
+              <a
+                href={SITE.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-yellow-300"
+                aria-label="Instagram"
+              >
+                <FaInstagram size={20} />
+              </a>
+
+            )}
 
             <a
-            href="https://facebook.com/yourpage"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-yellow-300 transition"
-          >
-            <FaFacebookF size={20} />
-          </a>
-
-            <a
-              href="https://instagram.com/yourpage"
+              href={`https://wa.me/${SITE.contact.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-300 transition"
+              className="transition hover:text-yellow-300"
+              aria-label="WhatsApp"
             >
-              <FaInstagram size={20} />
-            </a>
-
-            <a
-              href="https://wa.me/919940944985"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-yellow-300"
-            >
-              <MessageCircle />
+              <MessageCircle size={20} />
             </a>
 
           </div>
@@ -204,5 +303,7 @@ export default function Footer() {
       </div>
 
     </footer>
+
   );
+
 }

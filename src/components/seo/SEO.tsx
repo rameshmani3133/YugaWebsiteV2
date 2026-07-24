@@ -1,41 +1,158 @@
 import { Helmet } from "react-helmet-async";
 
+import {
+  SITE,
+  DEFAULT_SEO,
+  IMAGES,
+} from "../../config";
+
 type SEOProps = {
-  title: string;
-  description: string;
-  keywords: string;
+
+  title?: string;
+
+  description?: string;
+
+  keywords?: string;
+
   image?: string;
+
   url?: string;
+
+  noIndex?: boolean;
+
 };
 
 export default function SEO({
+
   title,
+
   description,
+
   keywords,
-  image = "/images/og-image.jpg",
-  url = "https://yugadocument.in",
+
+  image,
+
+  url,
+
+  noIndex = false,
+
 }: SEOProps) {
-  return (
+
+  const pageTitle =
+    title
+      ? `${title} | ${SITE.name}`
+      : DEFAULT_SEO.title;
+
+  const pageDescription =
+    description ??
+    DEFAULT_SEO.description;
+
+  const pageKeywords =
+    keywords ??
+    DEFAULT_SEO.keywords;
+
+  const pageImage =
+    image ??
+    `${SITE.website.url}${IMAGES.hero}`;
+
+  const canonical =
+    url ??
+    SITE.website.url;
+      return (
+
     <Helmet>
-      <title>{title}</title>
 
-      <meta name="description" content={description} />
+      <title>
 
-      <meta name="keywords" content={keywords} />
+        {pageTitle}
 
-      <meta property="og:type" content="website" />
+      </title>
 
-      <meta property="og:title" content={title} />
+      <meta
+        name="description"
+        content={pageDescription}
+      />
 
-      <meta property="og:description" content={description} />
+      <meta
+        name="keywords"
+        content={pageKeywords}
+      />
 
-      <meta property="og:image" content={image} />
+      <meta
+        name="author"
+        content={DEFAULT_SEO.author}
+      />
 
-      <meta property="og:url" content={url} />
+      <meta
+        name="robots"
+        content={
+          noIndex
+            ? "noindex,nofollow"
+            : DEFAULT_SEO.robots
+        }
+      />
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <link
+        rel="canonical"
+        href={canonical}
+      />
 
-      <link rel="canonical" href={url} />
+      <meta
+        property="og:type"
+        content="website"
+      />
+
+      <meta
+        property="og:title"
+        content={pageTitle}
+      />
+
+      <meta
+        property="og:description"
+        content={pageDescription}
+      />
+
+      <meta
+        property="og:image"
+        content={pageImage}
+      />
+
+      <meta
+        property="og:url"
+        content={canonical}
+      />
+
+      <meta
+        property="og:site_name"
+        content={SITE.name}
+      />
+
+      <meta
+        property="og:locale"
+        content={DEFAULT_SEO.locale}
+      />
+            <meta
+        name="twitter:card"
+        content="summary_large_image"
+      />
+
+      <meta
+        name="twitter:title"
+        content={pageTitle}
+      />
+
+      <meta
+        name="twitter:description"
+        content={pageDescription}
+      />
+
+      <meta
+        name="twitter:image"
+        content={pageImage}
+      />
+
     </Helmet>
+
   );
+
 }

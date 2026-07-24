@@ -21,18 +21,20 @@ export default function Home() {
       <FAQ />
       <Contact />
       <GoogleMap />
-      <SEO
-            title="YUGA Document Consultancy Centre | Property Registration & Legal Documentation | Namakkal"
-            description="YUGA Document Consultancy Centre provides Property Registration, Patta Transfer, Encumbrance Certificate (EC), Legal Documentation, Bank Loan Documentation and Government Documentation Services across Namakkal District, Tamil Nadu."
+      <>
+        <SEO
+            title="YUGA DOCUMENT CONSULTANCY CENTRE | Property Registration & Legal Documentation | Namakkal"
+            description="YUGA DOCUMENT CONSULTANCY CENTRE provides Property Registration, Patta Transfer, Encumbrance Certificate, Legal Documentation, Bank Loan Documentation and Government Documentation Services in Namakkal, Tamil Nadu."
             keywords="
-            Property Registration Namakkal,
-            Patta Transfer Namakkal,
-            Document Consultancy Namakkal,
-            Encumbrance Certificate Namakkal,
-            Legal Documentation Namakkal,
-            Bank Loan Documentation Namakkal,
-            Property Registration Tamil Nadu"
+        Property Registration Namakkal,
+        Patta Transfer Namakkal,
+        Legal Documentation Namakkal,
+        Encumbrance Certificate Namakkal,
+        Document Consultancy Namakkal,
+        Government Documentation Namakkal"
         />
+  {/* Existing homepage sections */}
+    </>
     </>
   );
 }
