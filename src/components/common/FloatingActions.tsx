@@ -3,6 +3,7 @@ import {
   Phone,
   MessageCircle,
   ChevronUp,
+  Mail,
 } from "lucide-react";
 
 import { SITE } from "../../config";
@@ -68,6 +69,20 @@ export default function FloatingActions() {
       >
 
         <MessageCircle size={24} />
+
+      </a>
+
+      {/* Email */}
+
+      <a
+        href={`mailto:${SITE.contact.email}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Email"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-green-600 text-white shadow-xl transition hover:scale-110 hover:bg-green-700"
+      >
+
+        <Mail size={24} />
 
       </a>
 
