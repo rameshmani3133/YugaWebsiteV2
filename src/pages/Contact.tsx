@@ -17,6 +17,9 @@ import {
   SERVICES,
 } from "../config";
 
+import { submitContact } from "../services/contact.service";
+
+
 type ContactForm = {
 
   name: string;
@@ -97,9 +100,19 @@ export default function Contact() {
        * submitContact(form)
        */
 
-      await new Promise(resolve =>
-        setTimeout(resolve, 1000)
-      );
+        const response = await submitContact(form);
+
+          if (response.success) {
+
+              setSuccess(response.message);
+
+              setForm(initialForm);
+
+          } else {
+
+              setError(response.message);
+
+          }
 
       setSuccess(
         "Thank you. Your enquiry has been submitted successfully."

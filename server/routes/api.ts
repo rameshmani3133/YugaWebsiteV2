@@ -1,15 +1,25 @@
 import { Router } from "express";
 
+import contactRoutes from "./contact.routes.js";
+
 const router = Router();
 
-router.get("/health", (_req, res) => {
-  res.json({
-    success: true,
-    application: "YUGA DOCUMENT CONSULTANCY CENTRE",
-    version: "1.0.0",
-    status: "Running",
-    timestamp: new Date().toISOString(),
-  });
+router.get("/health", (_, res) => {
+
+    res.json({
+
+        success: true,
+
+    });
+
 });
+
+router.use(
+
+    "/contact",
+
+    contactRoutes
+
+);
 
 export default router;
