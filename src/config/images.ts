@@ -3,5 +3,5 @@ export const IMAGES = {
 
   hero: "/images/hero-banner.jpg",
 
-  about: "/images/about.jpg",
+  about: "/images/about-office.jpg",
 } as const;

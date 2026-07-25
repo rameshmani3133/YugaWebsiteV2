@@ -1,0 +1,15 @@
+{
+  "name": "YUGA DOCUMENT CONSULTANCY CENTRE",
+  "short_name": "YUGA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#081F45",
+  "theme_color": "#081F45",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
