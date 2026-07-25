@@ -26,11 +26,11 @@ export const SITE = {
   },
 
   office: {
-    addressLine1: "",
+    addressLine1: "No. 1, Paramathi Road,",
     city: "Namakkal",
     district: "Namakkal",
     state: "Tamil Nadu",
-    pincode: "",
+    pincode: "637001",
     country: "India",
   },
 

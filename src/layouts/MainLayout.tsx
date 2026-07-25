@@ -7,17 +7,12 @@ import FloatingActions from "../components/common/FloatingActions";
 import Snackbar from "../components/common/Snackbar";
 
 export default function MainLayout() {
-
   return (
-
     <>
-
       <Navbar />
 
       <main>
-
         <Outlet />
-
       </main>
 
       <Footer />
@@ -25,9 +20,6 @@ export default function MainLayout() {
       <FloatingActions />
 
       <Snackbar />
-
     </>
-
   );
-
 }
