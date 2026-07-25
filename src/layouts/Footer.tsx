@@ -3,7 +3,6 @@ import {
   Mail,
   MapPin,
   Clock,
-  MessageCircle,
   ArrowRight,
 } from "lucide-react";
 
@@ -387,7 +386,7 @@ export default function Footer() {
 
             )}
 
-            <a
+           {/* <a
               href={`https://wa.me/${SITE.contact.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -397,7 +396,7 @@ export default function Footer() {
 
               <MessageCircle size={18} />
 
-            </a>
+            </a> */}
 
           </div>
 

@@ -221,7 +221,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9 }}
             className="relative self-start pt-4 lg:pt-0"
-          >
+            >
 
             {/* Main Hero Image */}
 
@@ -238,97 +238,8 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#081F45]/60 via-transparent to-transparent" />
 
             </div>
-
-            {/* Experience Card */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 1,
-                duration: 5,
-              }}
-              className="absolute -right-0 top-1 rounded-2xl border border-white/20 bg-white px-2 py-1.5 shadow-2xl"            >
-
-              <div className="text-4xl font-extrabold text-[#0A2E63]">
-
-                10+
-
-              </div>
-
-              <div className="mt-2 text-sm font-medium text-slate-600">
-
-                Years of Experience
-
-              </div>
-
+            
             </motion.div>
-
-            {/* Happy Clients */}
-
-            <motion.div
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 1,
-                duration: 8,
-              }}
-              className="absolute -right-0 top-22 rounded-2xl border border-white/20 bg-white p-4 shadow-2xl"            >
-
-              <div className="text-3xl font-bold text-[#0A2E63]">
-
-                500+
-
-              </div>
-
-              <div className="mt-1 text-sm text-slate-600">
-
-                Happy Clients
-
-              </div>
-
-            </motion.div>
-
-            {/* Trusted Services Card */}
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 1,
-                duration: 6,
-              }}
-              className="absolute bottom-24 right-0 rounded-2xl border border-white/20 bg-[#0A2E63]/90 px-2 py-2.5 text-white shadow-2xl backdrop-blur"
-            >
-
-              <div className="flex items-center gap-3">
-
-                <CheckCircle
-                  size={24}
-                  className="text-yellow-400"
-                />
-
-                <div>
-
-                  <div className="font-semibold">
-
-                    Trusted Government
-
-                  </div>
-
-                  <div className="text-sm text-slate-200">
-
-                    Documentation Services
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </motion.div>
-
-          </motion.div>
 
         </div>
 
